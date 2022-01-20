@@ -128,8 +128,7 @@ public enum RecordTypeEnumeration {
         return Arrays.stream(RecordTypeEnumeration.values())
                 .filter(recordType -> recordType.getValue() == value)
                 .findFirst()
-                .orElseThrow(() ->
-                        new NrbfException("Invalid RecordType: " + value));
+                .orElseGet(() -> ObjectNull);
     }
 
     public static RecordTypeEnumeration readFrom(LittleEndianDataInputStream stream) throws IOException {
